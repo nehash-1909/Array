@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+void countDistinct(int [], int , int );
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		
+		int n,k;
+		cin>>n>>k;
+		int a[n];
+		for(int i=0;i<n;i++)
+		cin>>a[i];
+		countDistinct(a,k,n);cout<<endl;
+	}
+	return 0;
+}
+
+
+void countDistinct(int a[], int k, int n)
+{
+   int hash[101]={0};
+   int b[k];
+     /*  for(int i=0;i<k;i++)
+    {
+        hash[a[i]]=1;
+    }*/
+    int c=0;
+    for(int i=0;i<k;i++)
+    {
+        if(hash[a[i]]==0)
+        c++;
+        hash[a[i]]++;
+    }
+    cout<<c<<" ";
+    for(int i=k;i<n;i++)
+    {
+        hash[a[i-k]]--;
+        if(hash[a[i-k]]==0)
+        c--;
+        if(hash[a[i]]==0)
+        c++;
+                cout<<c<<" ";
+        hash[a[i]]++;
+
+    }
+}
