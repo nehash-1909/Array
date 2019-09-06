@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+long fun1(long a[],int n)
+{
+    long in=a[0];
+    long ex=0;
+    for(long i=1;i<n;i++)
+    {
+        long oin=in;
+        in=max(in,ex+a[i]);
+        ex=oin;
+    }
+    return max(in,ex);
+}
+
+int main() {
+	int test;
+	cin>>test;
+	for(int t=0;t<test;t++)
+	{
+	    int n;
+	    cin>>n;
+	    long a[n];
+	    for(int i=0;i<n;i++)
+	    {
+	        cin>>a[i];
+	    }
+	    long res=fun1(a,n);
+	    cout<<res<<"\n";
+	}
+	return 0;
+}
