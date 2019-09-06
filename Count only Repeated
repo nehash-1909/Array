@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+	 long n;
+long bs(long long arr[],long l,long r,long x)
+{
+    if(r<l)
+        return -1;
+    long mid=l+(r-l)/2;
+    if(arr[mid]==x && (arr[mid+1]!=x || mid==r))
+        return mid;
+    else if(arr[mid]>x)
+        return bs(arr,l,mid-1,x);
+    else
+        return bs(arr,mid+1,r,x);
+     
+         
+ 
+}
+long bs1(long long a[],long l,long r)
+{
+    if(l>r)
+    return -1;
+    long m=l+(r-l)/2;
+    if(m==0)
+    return a[0];
+    if(m==n-1)
+    return a[n-1];
+    if(((m-1)>=l&&(m+1)<=r)&&(a[m]==a[m+1])||(a[m]==a[m-1]))
+    return a[m];
+    else if(a[m]==a[0]+(m))
+    return bs1(a,m+1,r);
+    else
+    return bs1(a,l,m-1);
+}
+
+
+int main() {
+	int test;
+	scanf("%d",&test);
+	for(int i=0;i<test;i++)
+	{
+
+	  scanf("%ld",&n);
+	  long long a[n];
+	  for(long j=0;j<n;j++)
+	  {
+	    scanf("%lld",&a[j]);	    
+	  }
+	    long l=bs1(a,0,n-1);   //for finding repeated lement
+	    //cout<<"\n element = "<<l;
+	    long lin=bs(a,0,n-1,l);  //right index of repeated element
+	    //  cout<<"\n right = "<<lin<<"\n";
+	    cout<<a[lin]<<" "<<lin-(a[lin]-a[0])+1<<"\n";
+	}
+	return 0;
+}
