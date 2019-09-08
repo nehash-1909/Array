@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <string.h>
+#define RANGE 255
+
+void countSort(char arr[]);
+
+int main()
+{
+    long int t;
+    scanf("%ld",&t);
+    while(t--)
+    {
+        long int n;
+        scanf("%ld",&n);
+        char arr[n+1];
+        scanf("%s",arr);
+        countSort(arr);
+    printf("%s
+", arr);
+    }return 0;
+}
+
+
+
+void countSort(char arr[])
+{
+int hash[26];
+int n = strlen(arr);
+for(int i=0;i<26;i++)
+hash[i]=0;
+for(int i=0;i<n;i++)
+{
+    hash[arr[i]-'a']++;
+   // printf("%c= and count=%d val=%d \n",arr[i],arr[i]-'a',hash[arr[i]-'a']);
+}
+int k=0;
+/*for(int i=0;i<26;i++)
+printf("%c= and val=%d \n",'a'+i,hash[i]);
+*/
+for(int i=0;i<26;i++)
+{
+ for(int j=0;j<hash[i];j++)
+{
+    arr[k++]='a'+i;
+}
+}
+}
