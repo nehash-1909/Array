@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+ {
+	int T;
+	cin>> T;
+	
+	while (T--)
+	{
+	    
+	    int N, diff;
+	    cin>>N>>diff;
+	    int A[N];
+	    
+	    for(int i = 0; i<N; i++)
+	        cin>>A[i];
+	   
+	    sortABS(A, N, diff);
+	    
+	    for(int & val : A)
+	        cout<<val<<" ";
+	    cout<<endl;
+	    
+	}
+	
+	return 0;
+}
+
+int aa;
+bool compare(int a,int b)
+{
+    if(abs(a-aa)<abs(b-aa))
+    return 1;
+    return 0;
+}
+void sortABS(int a[],int n, int k)
+{
+    aa=k;
+stable_sort(a,a+n,compare);
+   
+    
+}
