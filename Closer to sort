@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+int binarySearch(int arr[], int l, int r, int x,int n) 
+{ 
+      cout<<"\n l= "<<l<<" r= "<<r<<"\n";
+    while (r >= l) { 
+        int mid = l + (r - l) / 2; 
+  
+        cout<<"\n mid= "<<mid<<" value= "<<arr[mid]<<"\n";
+        if (arr[mid] == x) 
+        {
+            
+            return mid; 
+        }
+        else if(mid==0)
+        {
+        if(arr[mid+1]==x)
+        return mid+1;
+        }
+        else if(mid==n-1)
+        {
+            if(arr[n-2]==x)
+            return mid-1;
+        }
+        else if(arr[mid-1]==x)
+        return mid-1;
+        else if(arr[mid+1]==x)
+        {
+               return mid+1;
+        }
+        if(arr[mid]>x)
+        r=mid-2;
+        else
+        l=mid+2;
+      
+    } 
+  
+
+    return -1; 
+} 
+
+int closer(int arr[],int n, int x)
+{
+    int l=0;
+    int r=n-1;
+    int res=binarySearch(arr,l,r,x,n); 
+   
+       return res;
+      
+    
+}
+int main() {
+    
+    cin.tie(NULL);
+    
+	int t;
+	cin >> t;
+	
+	while(t--){
+	  
+	    int n;
+	    cin >> n;
+	    int arr[n];
+	    for(int i = 0;i<n;i++){
+	        cin >> arr[i];
+	    }
+	    int x;
+	    cin >> x;
+	    
+	    int res = closer(arr,n,x);
+	    
+	    cout << res << endl;
+	}
+	
+	return 0;
+
+}
+/*This is a function problem.You only need to complete the function given below*/
